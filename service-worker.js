@@ -1,4 +1,4 @@
-var CACHE_NAME = 'hergaspar-v16-cache-4';
+var CACHE_NAME = 'hergaspar-v16-cache-5';
 var FILES_TO_CACHE = [
   './hergaspar_v16_sync.html',
   './manifest.json',
@@ -10,7 +10,11 @@ var FILES_TO_CACHE = [
 self.addEventListener('install', function(evt){
   evt.waitUntil(
     caches.open(CACHE_NAME).then(function(cache){
-      return cache.addAll(FILES_TO_CACHE);
+      return Promise.all(FILES_TO_CACHE.map(function(url){
+        return cache.add(url).catch(function(err){
+          console.error('Falhou ao guardar em cache:', url, err);
+        });
+      }));
     })
   );
   self.skipWaiting();
@@ -37,7 +41,13 @@ self.addEventListener('fetch', function(evt){
           caches.open(CACHE_NAME).then(function(cache){ cache.put(evt.request, respClone); });
         }
         return networkResp;
-      }).catch(function(){ return cached; });
+      }).catch(function(){
+        if(cached) return cached;
+        if(evt.request.mode==='navigate'){
+          return caches.match('./hergaspar_v16_sync.html');
+        }
+        return Promise.reject('offline-sem-cache');
+      });
       return cached || fetchPromise;
     })
   );
