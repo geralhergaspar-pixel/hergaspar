@@ -1,7 +1,8 @@
-var CACHE_NAME = 'hergaspar-v16-cache-2';
+var CACHE_NAME = 'hergaspar-v16-cache-4';
 var FILES_TO_CACHE = [
   './hergaspar_v16_sync.html',
   './manifest.json',
+  './logo.png',
   'https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js',
   'https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js'
 ];

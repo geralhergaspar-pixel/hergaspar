@@ -125,7 +125,7 @@ body{font-family:Arial,sans-serif;background:var(--lt);color:var(--dk);min-heigh
 <!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="home-hdr">
-    <div class="logo-t"><span>Her</span>gaspar <span style="font-size:14px;color:#AAA;font-weight:400;margin-left:4px">unipessoal, Lda</span></div>
+    <img src="logo.png" alt="Hergaspar" style="max-width:200px;height:auto;display:block;margin:0 auto 4px">
     <div class="home-sub">Sistema de Orçamentos</div>
     <div id="sync-badge" style="font-size:11px;margin-top:8px;color:#AAA">a ligar...</div>
   </div>
@@ -964,7 +964,7 @@ function renderPDF(num){
   document.getElementById('pdf-wrap').dataset.num=num;
 }
 
-function guardarOrc(){
+function guardarOrc(silencioso){
   var num=document.getElementById('pdf-wrap').dataset.num||gerarNumOrc();
   var totIVA=E.prods.reduce(function(s,p){return s+p.tot;},0);
   var d=new Date();
@@ -978,7 +978,7 @@ function guardarOrc(){
     E.orcAtualIdx=0;
   }
   salvarOrcs();
-  alert('Orçamento guardado!');
+  if(!silencioso)alert('Orçamento guardado!');
 }
 
 function fmt(v){return (Math.round((v||0)*100)/100).toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
@@ -1016,6 +1016,7 @@ function isAndroidApp(){
 }
 
 function imprimirDoc(){
+  guardarOrc(true);
   if(isAndroidApp() && window.AndroidPrint && window.AndroidPrint.imprimir){
     var num = document.getElementById('pdf-wrap').dataset.num || gerarNumOrc();
     window.AndroidPrint.imprimir('Orcamento_'+num);
