@@ -965,8 +965,7 @@
     await initDb();
   }
 
-  init();if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('service-worker.js').catch(function(e){console.error('SW falhou',e);});
+  init()
 }
 })();
 </script>
