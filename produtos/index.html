@@ -955,8 +955,8 @@
   window.addEventListener('offline', updateSyncBadge);
   setInterval(()=>{ if (navigator.onLine) flushPendingQueue(); }, 20000);
 
-  async function init()if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('service-worker.js').catch(function(e){console.error('SW falhou',e);});{
+  async function init()}
+  {
     fillCategorySelect();
     loadLocal();
     renderChips();
@@ -965,7 +965,9 @@
     await initDb();
   }
 
-  init();
+  init();if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('service-worker.js').catch(function(e){console.error('SW falhou',e);});
+}
 })();
 </script>
 </body>
