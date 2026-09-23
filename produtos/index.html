@@ -901,23 +901,7 @@
     saveQueue();
   }
 
-  async function initDb(){
-    if (dbInitialized) return;
-    async function initDb(){
-  if (dbInitialized) return;
-  try {
-    var firebaseConfig = {
-      apiKey: "AIzaSyBZplDDzsdNQUhJckLa43S8SvNAkQ3uF8E",
-      authDomain: "hergaspa-5254e.firebaseapp.com",
-      projectId: "hergaspa-5254e",
-      storageBucket: "hergaspa-5254e.firebasestorage.app",
-      messagingSenderId: "329107085555",
-      appId: "1:329107085555:web:a65df5dfb48c3c0c22ff86"
-    };
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
-    db.enablePersistence({synchronizeTabs:true}).catch(function(){});
-  } catch(e){ db = null; }
+  initDb()
 
     if (db){
       dbInitialized = true;
