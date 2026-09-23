@@ -18,10 +18,3 @@
     }
   ]
 }
-"scope"{
-  "name": "Hergaspar - Orçamentos",
-  "short_name": "Hergaspar",
-  "start_url": "./hergaspar_v16_sync.html",
-  "scope": "./hergaspar_v16_sync.html",
-  "display": "standalone",
-  ...
