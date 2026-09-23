@@ -1006,7 +1006,8 @@ renderHome();
 initImagens();
 initFirebase();
 if('serviceWorker' in navigator){
- navigator.serviceWorker.register('service-worker.js', { scope: './hergaspar_v16_sync.html' }).catch(function(e){console.error('SW falhou',e);});
+ navigator.serviceWorker.register('service-worker.js').catch(function(e){console.error('SW falhou',e);});
+}
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)fecharModal();});
 document.getElementById('emod').addEventListener('click',function(e){if(e.target===this)fecharEmod();});
 
