@@ -929,16 +929,16 @@
         },
         (err)=>{ console.error('settings error', err); }
       );
-      flushPendingQueue();
+              flushPendingQueue();
     }
     updateSyncBadge();
-  }
+};
 
-  window.addEventListener('online', ()=>{ updateSyncBadge(); initDb(); flushPendingQueue(); });
-  window.addEventListener('offline', updateSyncBadge);
-  setInterval(()=>{ if (navigator.onLine) flushPendingQueue(); }, 20000);
+window.addEventListener('online', () => { updateSyncBadge(); initDb(); flushPendingQueue(); });
+window.addEventListener('offline', updateSyncBadge);
+setInterval(() => { if (navigator.onLine) flushPendingQueue(); }, 20000);
 
-  async function init()}
+async function init() {
   {
     fillCategorySelect();
     loadLocal();
